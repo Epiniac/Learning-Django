@@ -5,11 +5,11 @@
 </head>
 <style>
     body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(0, 31, 54);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0, 31, 54);
     }
 
     .welcome {
@@ -60,15 +60,28 @@
 	<header>
         <img class="welcome" src="https://pngimg.com/uploads/welcome/welcome_PNG99.png" alt="Welcome">
     </header>
-	<button id="chat-button" onclick="startChat()" onmouseover="startAnimation(this)" onmouseout="stopAnimation(this)">Begin Chatting</button>
-	<button id="rain-button" onclick="makeItRain()" onmouseover="startAnimation(this)" onmouseout="stopAnimation(this)">Make it Rain</button>
+	<button id="chat-button" onclick="startChat('chat')" onmouseover="startAnimation(this)" onmouseout="stopAnimation(this)">Begin Chatting</button>
+	<button id="chat-button" onclick="startChat('sad')" onmouseover="startAnimation(this)" onmouseout="stopAnimation(this)">Sad Character</button>
+    <button id="chat-button" onclick="startChat('happy')" onmouseover="startAnimation(this)" onmouseout="stopAnimation(this)">Happy Character</button>
+    <button id="chat-button" onclick="startChat('angry')" onmouseover="startAnimation(this)" onmouseout="stopAnimation(this)">Angry Character</button>
+    <button id="rain-button" onclick="makeItRain()" onmouseover="startAnimation(this)" onmouseout="stopAnimation(this)">Make it Rain</button>
 
     <script >
-        function startChat() {
+        function startChat(sel) {
             // Code to start a chat window
             alert("Chat window will open soon!");
             setTimeout(function() {
-                window.location.href = "http://127.0.0.1:8000/babyduck/chat";
+                switch (sel) {
+                    case 'sad':
+                        window.location.href = "http://127.0.0.1:8000/babyduck/sad";
+                    case 'happy':
+                        window.location.href = "http://127.0.0.1:8000/babyduck/happy";
+                    case 'angry':
+                        window.location.href = "http://127.0.0.1:8000/babyduck/angry";
+                    default:
+                        window.location.href = "http://127.0.0.1:8000/babyduck/chat";
+                        break;
+                }
             }, 500);
         }
 

@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from babyduck.models import Duck
 
 def index (request) :
-    return render(request , "index.html" )
+    listDuck = Duck.objects.all()
+    return render(request , "index.html" , {
+        'names' : listDuck[0].name
+    })
 
 def chat (request) :
     return render(request , "chat.html")
